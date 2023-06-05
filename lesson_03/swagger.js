@@ -4,7 +4,6 @@ const swaggerUi = require("swagger-ui-express")
 
 const app = express()
 
-// Опції конфігурації Swagger
 const options = {
   definition: {
     openapi: "3.0.0",
@@ -15,11 +14,11 @@ const options = {
     },
     servers: [
       {
-        url: "http://localhost:3000", // Змініть це на ваш домен або IP-адресу сервера
+        url: "http://localhost:3000",
       },
     ],
   },
-  apis: ["./server.js"], // Шлях до файлу server.js, де знаходяться маршрути
+  apis: ["./server.js"],
 }
 
 const specs = swaggerJsDoc(options)
