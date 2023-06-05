@@ -1,0 +1,34 @@
+[
+  {
+    "username": "admin",
+    "password": "admin123",
+    "role": "Admin",
+    "tokens": []
+  },
+  {
+    "username": "user1",
+    "password": "user123",
+    "role": "User",
+    "tokens": [
+      "user1-token1",
+      "user1-token2"
+    ]
+  },
+  {
+    "username": "user2",
+    "password": "user456",
+    "role": "User",
+    "tokens": [
+      "user2-token1"
+    ]
+  },
+  {
+    "username": "user3",
+    "password": "user1233",
+    "role": "User",
+    "tokens": [
+      "user1-token3",
+      "user1-token6"
+    ]
+  }
+]
