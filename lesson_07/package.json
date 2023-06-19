@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "socket.io": "^4.6.2",
+    "websocket": "^1.0.34",
+    "zlib": "^1.0.5"
+  }
+}
