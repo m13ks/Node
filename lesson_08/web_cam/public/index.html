@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Відображення зображення з вебкамери</title>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <video id="video" autoplay></video>
+
+    <script>
+      const socket = io()
+
+      navigator.mediaDevices
+        .getUserMedia({ video: true })
+        .then((stream) => {
+          const videoElement = document.getElementById("video")
+          videoElement.srcObject = stream
+
+          setInterval(() => {
+            const canvas = document.createElement("canvas")
+            const context = canvas.getContext("2d")
+            canvas.width = videoElement.videoWidth
+            canvas.height = videoElement.videoHeight
+            context.drawImage(videoElement, 0, 0, canvas.width, canvas.height)
+            const imageData = canvas.toDataURL("image/jpeg")
+            socket.emit("image", imageData)
+          }, 1000 / 25) // Кожну 1/25 секунди (25 кадрів в секунду)
+        })
+        .catch((error) => {
+          console.error("Помилка при отриманні доступу до вебкамери:", error)
+        })
+
+      socket.on("image", (imageData) => {
+        const imageElement = document.createElement("img")
+        imageElement.src = imageData
+        document.body.appendChild(imageElement)
+      })
+    </script>
+  </body>
+</html>
